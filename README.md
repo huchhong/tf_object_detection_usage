@@ -11,7 +11,7 @@ cd models/research/object_detecion
 ```
 将xml_to_csv.py和generate_tfrecord.py拷贝到object_detection下
 
-** 环境配置
+## 环境配置
 
 每次进入终端后，都要设置一下PYTHONPATH：
 
@@ -20,11 +20,11 @@ windows: set PYTHONPATH=${install_dir}\models;${install_dir}\models\research;${i
 linux: export PYTHONPATH=${install_dir}/models;${install_dir}/models/research;${install_dir}/models/research/slim
 ```
 
-** 编译protobuf
+## 编译protobuf
 
 porotos目录下有很多proto文件，需要将它们用protoc转换为对应的python文件
 
-*** windows
+### windows
 conda install -c anaconda protobuf
 protoc --python_out=. .\protos\train.proto ...
 由于cmd终端不支持glob，因此需要手动输入protos目录下的所有proto
@@ -33,7 +33,7 @@ protoc --python_out=. .\protos\train.proto ...
 tensorflow不可用。如果已经安装了tensorflow，需要将tensorflow,protobuf先卸载掉，然后重新安装tensorflow。
 如果还未安装，也需要将protobuf卸载掉。如果没有以上问题，可以忽略。
 
-*** linux
+### linux
 
 TODO
 
@@ -93,7 +93,7 @@ item {
 }
 ```
 
-** 下载预训练的模型参数
+## 下载预训练的模型参数
 
 到[detection_model_zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)
 下载预训练的模型参数，将其解压放到object_detection目录下
@@ -126,8 +126,6 @@ eval_input_reader: {
 eval_config: {
   num_examples: 8000 # 测试集的样本数
   num_visualizations: 100 # tensorboard上可以看到的图片个数
-  # Note: The below line limits the evaluation process to 10 evaluations.
-  # Remove the below line to evaluate indefinitely.
   max_evals: 10  # 评估的次数。在训练的同时可以打开另一个评估进程。
 }
 
