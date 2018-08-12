@@ -41,12 +41,12 @@ TODO
 ---------
 
 samples/configs下有各种网络的配置文件，后面训练自己的数据的时候就从这里选择相应的网络的配置文件进行修改
-
+```
 mkdir training
 mkdir images
 mkdir images/train
 mkdir images/test
-
+```
 数据准备
 --------
 
@@ -105,7 +105,7 @@ item {
 将samples/configs目录下想用的网络的config文件拷贝到training下（重命名），并做相应修改。
 
 以ssd_mobilenet_v2_coco.config为例，需要修改的地方有：
-
+```
 num_classes： # 改为自己的数据集里的类别数
 fine_tune_checkpoint： "PATH_TO_BE_CONFIGURED/model.ckpt"   # 下载好的预训练模型
 num_steps： # 根据需要调整训练步数
@@ -128,12 +128,13 @@ eval_config: {
   num_visualizations: 100 # tensorboard上可以看到的图片个数
   max_evals: 10  # 评估的次数。在训练的同时可以打开另一个评估进程。
 }
+```
 
 开始训练
 ---------
-
+```
 python legacy/train.py --logtostderr --train_dir=training --pipeline_config_path=training/xxx.config
-
+```
 训练过程中可以用tensorboard查看训练的中间过程
 ```
 tensorboard --logdir=training
