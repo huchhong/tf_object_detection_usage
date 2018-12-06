@@ -17,7 +17,7 @@ cd models/research/object_detecion
 
 ```
 windows: set PYTHONPATH=${install_dir}\models;${install_dir}\models\research;${install_dir}\models\research\slim
-linux: export PYTHONPATH=${install_dir}/models;${install_dir}/models/research;${install_dir}/models/research/slim
+linux: export PYTHONPATH=${install_dir}/models:${install_dir}/models/research:${install_dir}/models/research/slim
 ```
 
 ## 编译protobuf
@@ -25,8 +25,10 @@ linux: export PYTHONPATH=${install_dir}/models;${install_dir}/models/research;${
 porotos目录下有很多proto文件，需要将它们用protoc转换为对应的python文件
 
 ### windows
+```
 conda install -c anaconda protobuf
 protoc --python_out=. .\protos\train.proto ...
+```
 由于cmd终端不支持glob，因此需要手动输入protos目录下的所有proto
 
 注意当前版本conda安装的最新protobuf是3.5版本，而当前tensorflow（1.10.0）要求protobuf的版本>=3.6.0，因此此时
